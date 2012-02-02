@@ -5,13 +5,13 @@
 	 ((null? stack)
 	    (dfshelper g
 	      	       unvisited 
-		       (append (list (caar unvisited) stack)) 
+		       (append (list (caar unvisited)) stack) 
 		       path))
 	 ((memq (car stack) path) (dfshelper g
 				             unvisited 
 					     (cdr stack) 
 					     path))
-	 (else (display (car stack)) (display "\n") (dfshelper g
+	 (else (dfshelper g
 		          (cdr unvisited) 
 			  (append (car (neighbours (car stack) g)) (cdr stack)) 
 			  (append path (list (car stack)))))))
