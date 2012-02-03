@@ -1,0 +1,6 @@
+(define (quicksort l)
+  (if (null? l)
+    '()
+    (append (quicksort (filter (lambda (x) (> (car l) x)) (cdr l)))
+	    (list (car l))
+	    (quicksort (remove (lambda (x) (> (car l) x)) (cdr l))))))
