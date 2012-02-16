@@ -11,15 +11,15 @@
 				   (merge l1 
 					  (cdr l2))))))
   (define (splitsort lst)
-    (cond
-      ((null? lst) ())
-      ((equal? 1 (length lst)) lst)
-      (else (merge (splitsort (take lst 
-				    (round (/ (length lst) 
-					      2)))) 
+    (let ((index (round (/ (length lst)
+			   2))))
+      (cond
+	((null? lst) ())
+        ((equal? 1 (length lst)) lst)
+        (else (merge (splitsort (take lst 
+				      index)) 
 		   (splitsort (drop lst 
 				    (- (length lst) 
-				       (round (/ (length lst) 
-						 2)))))))))
+				       index))))))))
   (splitsort lst))
 
